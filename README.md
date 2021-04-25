@@ -31,7 +31,7 @@ Download `final_gconet.pth` ([Google Drive](https://drive.google.com/file/d/1y1U
 ## Usage
 1. Put the trained model to the data dir: `GCoNet/data/final_gconet.pth`.
 
-2. Run `sh test.sh`
+2. Run `sh all.sh` for training and testing.
 
 ## Prediction results
 The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.google.com/file/d/17LgbcwGNK1DFl9jRAoMxF2796YlQYR4a/view?usp=sharing).
