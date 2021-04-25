@@ -7,7 +7,7 @@ Download `final_gconet.pth` ([Google Drive](https://drive.google.com/file/d/1y1U
 
 ## Data Format
 
-  Put the [CoCA](http://zhaozhang.net/coca.html), [CoSOD3k](http://dpfan.net/CoSOD3K/) and [Cosal2015]() datasets to `GCoNet/data` as the following structure:
+  Put the [DUTS_class (training dataset from GICD)](https://drive.google.com/file/d/1Ej6FKifpRi1bx09I0r7D6MO-GI8SDu_M/view?usp=sharing), [CoCA](http://zhaozhang.net/coca.html), [CoSOD3k](http://dpfan.net/CoSOD3K/) and [Cosal2015]() datasets to `GCoNet/data` as the following structure:
   ```
   GCoNet
      ├── other codes
@@ -15,11 +15,13 @@ Download `final_gconet.pth` ([Google Drive](https://drive.google.com/file/d/1y1U
      │ 
      └── data
            ├──── images
+           |       ├── DUTS_class (DUTS_class's image files)
            |       ├── CoCA (CoCA's image files)
            |       ├── CoSOD3k (CoSOD3k's image files)
            │       └── Cosal2015 (Cosal2015's image files)
            │ 
            └────── gts
+                    ├── DUTS_class (DUTS_class's Groundtruth files)
                     ├── CoCA (CoCA's Groundtruth files)
                     ├── CoSOD3k (CoSOD3k's Groundtruth files)
                     └── Cosal2015 (Cosal2015's Groundtruth files)
