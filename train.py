@@ -44,10 +44,6 @@ parser.add_argument('--trainset',
                     default='Jigsaw2_DUTS',
                     type=str,
                     help="Options: 'Jigsaw2_DUTS', 'DUTS_class'")
-parser.add_argument('--valset',
-                    default='CoSal15',
-                    type=str,
-                    help="Options: 'CoSal15', 'CoCA'")
 parser.add_argument('--size',
                     default=224,
                     type=int,
@@ -71,8 +67,8 @@ if args.trainset == 'Jigsaw2_DUTS':
                               num_workers=4,
                               pin=True)
 elif args.trainset == 'DUTS_class':
-    train_img_path = '/home/fanqi/data/sod/DUTS_class/img/'
-    train_gt_path = '/home/fanqi/data/sod/DUTS_class/gt/'
+    train_img_path = './data/images/DUTS_class/'
+    train_gt_path = './data/gts/DUTS_class/'
     train_loader = get_loader(train_img_path,
                               train_gt_path,
                               args.size,
@@ -87,32 +83,6 @@ else:
     print('Unkonwn train dataset')
     print(args.dataset)
 
-
-if args.valset == 'CoSal15':
-    val_img_path = '/home/fanqi/data/sod/Cosal2015/Image/'
-    val_gt_path = '/home/fanqi/data/sod/Cosal2015/GroundTruth/'
-    val_loader = get_loader(val_img_path,
-                            val_gt_path,
-                            args.size,
-                            1,
-                            istrain=False,
-                            shuffle=False,
-                            num_workers=4,
-                            pin=True)
-elif args.valset == 'CoCA':
-    val_img_path = '/home/fanqi/data/sod/CoCA/image/'
-    val_gt_path = '/home/fanqi/data/sod/CoCA/binary/'
-    val_loader = get_loader(val_img_path,
-                            val_gt_path,
-                            args.size,
-                            1,
-                            istrain=False,
-                            shuffle=False,
-                            num_workers=4,
-                            pin=True)
-else:
-    print('Unkonwn val dataset')
-    print(args.dataset)
 
 # make dir for tmp
 os.makedirs(args.tmp, exist_ok=True)
@@ -180,14 +150,8 @@ def main():
             logger.info("=> no checkpoint found at '{}'".format(args.resume))
 
     print(args.epochs)
-    #best_mae = 100.0
     for epoch in range(args.start_epoch, args.epochs):
-
-
         train_loss = train(epoch)
-        #if epoch <= 3:
-        #    val_mae = validate(epoch)
-        #val_mae_record.append(val_mae)
 
         # Save checkpoint
         save_checkpoint(
@@ -197,16 +161,8 @@ def main():
                 'scheduler': scheduler.state_dict(),
             },
             path=args.tmp)
-        '''
-        if val_mae <= best_mae:
-            best_mae = val_mae
-            logger.info('best epoch: ' + str(args.epochs))
-
-            ginet_dict = model.ginet.state_dict()
-            torch.save(ginet_dict, os.path.join(args.tmp, 'best_gicd_ginet.pth'))
-        '''
     ginet_dict = model.ginet.state_dict()
-    torch.save(ginet_dict, os.path.join(args.tmp, 'final_gicd_ginet.pth'))
+    torch.save(ginet_dict, os.path.join(args.tmp, 'final_gconet.pth'))
 
 def train(epoch):
     loss_log = AverageMeter()
@@ -259,50 +215,6 @@ def train(epoch):
                                                       loss=loss_log))
 
     return loss_log.avg
-
-
-def validate(epoch):
-
-    # Switch to evaluate mode
-    model.eval()
-    model.set_mode('test')
-    showbags = []
-
-    saved_root = os.path.join(args.tmp, 'Salmaps')
-    # make dir for saving results
-    os.makedirs(saved_root, exist_ok=True)
-
-    for batch in tqdm(val_loader):
-        inputs = batch[0].to(device).squeeze(0)
-        gts = batch[1].to(device).squeeze(0)
-        subpaths = batch[2]
-        ori_sizes = batch[3]
-
-        scaled_preds = model(inputs)[-1]
-
-        num = len(scaled_preds)
-
-        os.makedirs(os.path.join(saved_root, subpaths[0][0].split('/')[0]),
-                    exist_ok=True)
-
-        for inum in range(num):
-            subpath = subpaths[inum][0]
-            ori_size = (ori_sizes[inum][0].item(), ori_sizes[inum][1].item())
-            res = nn.functional.interpolate(scaled_preds[inum].unsqueeze(0),
-                                            size=ori_size,
-                                            mode='bilinear',
-                                            align_corners=True)
-            save_tensor_img(res, os.path.join(saved_root, subpath))
-    
-    evaler = Eval(img_root=saved_root, label_root=val_gt_path)
-
-    mae = evaler.eval_mae()
-
-    logger.info('@==Final== Epoch[{0}/{1}]  '
-                'MAE: {mae:.3f}  '
-                .format(epoch, args.epochs, mae=mae))
-
-    return mae
 
 
 if __name__ == '__main__':
