@@ -32,6 +32,10 @@ Download `final_gconet.pth` ([Google Drive](https://drive.google.com/file/d/1y1U
 
 Run `sh all.sh` for training (`train_GPU0.sh`) and testing (`test.sh`).
 
+## Note
+
+We observe that the results on CoCA dataset are unstable when train the model multiple times, especifically for the `F-measure` metric. It may be caused by the challenging images of CoCA dataset where the target objects are relative small and there are many non-target objects in a complex environment. It is also a potential research direction to obatin stable results on such challenging real-world images. We follow other CoSOD methods to report the best performance of our model. You need to train the model multiple times to obtain the best result on CoCA dataset.
+
 ## Prediction results
 The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.google.com/file/d/17LgbcwGNK1DFl9jRAoMxF2796YlQYR4a/view?usp=sharing).
 
