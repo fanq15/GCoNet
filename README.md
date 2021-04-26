@@ -53,4 +53,4 @@ The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.goog
   ```
 
 ## Acknowledgements
-[Zhao Zhang](https://github.com/zzhanghub) and his [GICD](https://github.com/zzhanghub/gicd/edit/master/README.md) give us lots of helps!
+[Zhao Zhang](https://github.com/zzhanghub) gives us lots of helps! Our framework is built on his [GICD](https://github.com/zzhanghub/gicd/edit/master/README.md).
