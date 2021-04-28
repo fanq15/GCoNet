@@ -44,7 +44,7 @@ The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.goog
 
 ## Citation
   ```
-@inproceedings{fan2020fsod,
+@inproceedings{fan2021gconet,
   title={Group Collaborative Learning for Co-Salient Object Detection},
   author={Fan, Qi and Fan, Deng-Ping and Fu, Huazhu and Tang, Chi-Keung and Shao, Ling and Tai, Yu-Wing},
   booktitle={CVPR},
