@@ -5,7 +5,7 @@ The official repo of the CVPR 2021 paper [Group Collaborative Learning for Co-Sa
 ## Trained model
 Download `final_gconet.pth` ([Google Drive](https://drive.google.com/file/d/1y1UxatK033mQz1GIA_tdElIHK-peVzz4/view?usp=sharing)). And it is the [training log](https://drive.google.com/file/d/1BBeRIEKjoewMrfwramoxxzJotBzRpuMb/view?usp=sharing).
 
-Put `final_gconet.pth` at `GCoNet/tmp/GCoNet_run1` (you need to create this directory first).
+Put `final_gconet.pth` at `GCoNet/tmp/GCoNet_run1`.
 
 Run `test.sh` for evaluation.
 
