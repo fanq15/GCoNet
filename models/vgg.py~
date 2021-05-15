@@ -67,7 +67,7 @@ class VGG_Backbone(nn.Module):
         pre_train = torch.load(os.path.dirname(__file__) + '/vgg16-397923af.pth')
         #if self.training:
         #    pre_train = torch.load('/home/fanqi/data/model/vgg16-397923af.pth')
-        self._initialize_weights(pre_train)
+        #    self._initialize_weights(pre_train)
 
     def forward(self, x):
         x = self.conv1(x)

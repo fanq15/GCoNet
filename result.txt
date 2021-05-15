@@ -1,3 +1,0 @@
-CoCA (SalMaps): 0.1050 mae || 0.5438 max-fm || 0.5313 mean-fm || 0.7598 max-Emeasure || 0.7393 mean-Emeasure || 0.6729 S-measure || 0.4554 AP || 0.8234 AUC.
-CoSOD3k (SalMaps): 0.0712 mae || 0.7771 max-fm || 0.7699 mean-fm || 0.8601 max-Emeasure || 0.8568 mean-Emeasure || 0.8018 S-measure || 0.7218 AP || 0.8890 AUC.
-Cosal2015 (SalMaps): 0.0681 mae || 0.8471 max-fm || 0.8376 mean-fm || 0.8874 max-Emeasure || 0.8836 mean-Emeasure || 0.8453 S-measure || 0.8155 AP || 0.9171 AUC.
