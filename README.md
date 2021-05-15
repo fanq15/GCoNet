@@ -36,9 +36,20 @@ Run `test.sh` for evaluation.
 
 Run `sh all.sh` for training (`train_GPU0.sh`) and testing (`test.sh`).
 
-## Note
+## Note and Discussion
 
-We observe that the results on CoCA dataset are unstable when train the model multiple times, especifically for the `F-measure` metric. It may be caused by the challenging images of CoCA dataset where the target objects are relative small and there are many non-target objects in a complex environment. [This paper](https://arxiv.org/abs/2007.03380) also discussed the stability problem in CoSOD. It is a potential research direction to obtain stable results on such challenging real-world images. We follow other CoSOD methods to report the best performance of our model. You need to train the model multiple times to obtain the best result on CoCA dataset. If you want more discussion about it, you can contact me (qfanaa@connect.ust.hk).
+We observed that the results on CoCA dataset are unstable when train the model multiple times, and the performance fluctuation can reach around 2.0 ponits (But our performance are still much better than other methods in the worst case). While the results on both CoSOD3k and Cosal2015 are stable. There are three possible reasons:
+
+1.	It may be caused by the challenging images of CoCA dataset where the target objects are relative small and there are many non-target objects in a complex environment.
+2.	The imperfect training dataset. We use the training dataset in GICD, whose labels are produced by the classification model. There are some noisy labels in the training dataset.
+3.	The randomness of training groups. In our training, two groups are randomly picked for training. Different collaborative training groups have different training difficulty.
+
+Possible research directions for performance stability:
+
+1.	Reduce label noise. If you want to use the training dataset in GICD to train your model. It is better to use multiple powerful classification models (ensemble) to obtain better class labels.
+2.	Deterministic training groups. For two collaborative image groups, you can explore different ways to pick the suitable groups, e.g., pick two most similar groups for hard example mining.
+
+[This paper](https://arxiv.org/abs/2007.03380) also discussed the stability problem in CoSOD. It is a potential research direction to obtain stable results on such challenging real-world images. We follow other CoSOD methods to report the best performance of our model. You need to train the model multiple times to obtain the best result on CoCA dataset. If you want more discussion about it, you can contact me (qfanaa@connect.ust.hk).
 
 ## Prediction results
 The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.google.com/file/d/17LgbcwGNK1DFl9jRAoMxF2796YlQYR4a/view?usp=sharing).
