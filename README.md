@@ -16,19 +16,19 @@ Run `test.sh` for evaluation.
   GCoNet
      ├── other codes
      ├── ...
-     │ 
+     │ 
      └── data
            ├──── images
            |       ├── DUTS_class (DUTS_class's image files)
            |       ├── CoCA (CoCA's image files)
            |       ├── CoSOD3k (CoSOD3k's image files)
-           │       └── Cosal2015 (Cosal2015's image files)
-           │ 
+           │       └── Cosal2015 (Cosal2015's image files)
+           │ 
            └────── gts
                     ├── DUTS_class (DUTS_class's Groundtruth files)
                     ├── CoCA (CoCA's Groundtruth files)
                     ├── CoSOD3k (CoSOD3k's Groundtruth files)
-                    └── Cosal2015 (Cosal2015's Groundtruth files)
+                    └── Cosal2015 (Cosal2015's Groundtruth files)
   ```  
   
 <!-- USAGE EXAMPLES -->
@@ -58,3 +58,4 @@ The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.goog
 
 ## Acknowledgements
 [Zhao Zhang](https://github.com/zzhanghub) gives us lots of helps! Our framework is built on his [GICD](https://github.com/zzhanghub/gicd/edit/master/README.md).
+![Uploading image.png…]()
