@@ -52,7 +52,7 @@ parser.add_argument('--tmp', default=None, help='Temporary folder')
 
 args = parser.parse_args()
 
-
+'''
 # Prepare dataset
 if args.trainset == 'Jigsaw2_DUTS':
     train_img_path = '../Dataset/Jigsaw2_DUTS/img/'
@@ -82,7 +82,7 @@ elif args.trainset == 'DUTS_class':
 else:
     print('Unkonwn train dataset')
     print(args.dataset)
-
+'''
 
 # make dir for tmp
 os.makedirs(args.tmp, exist_ok=True)
@@ -151,7 +151,22 @@ def main():
 
     print(args.epochs)
     for epoch in range(args.start_epoch, args.epochs):
-        train_loss = train(epoch)
+
+        train_img_path = './data/images/DUTS_class/'
+        train_gt_path = './data/gts/DUTS_class/'
+        train_loader = get_loader(train_img_path,
+                              train_gt_path,
+                              args.size,
+                              1, #args.bs,
+                              max_num=args.bs, #16, #20,
+                              istrain=True,
+                              shuffle=False,
+                              num_workers=8, #4,
+                              epoch=epoch,
+                              pin=True)
+
+
+        train_loss = train(epoch, train_loader)
 
         # Save checkpoint
         save_checkpoint(
@@ -164,7 +179,7 @@ def main():
     ginet_dict = model.ginet.state_dict()
     torch.save(ginet_dict, os.path.join(args.tmp, 'final_gconet.pth'))
 
-def train(epoch):
+def train(epoch, train_loader):
     loss_log = AverageMeter()
 
     # Switch to train mode
@@ -177,6 +192,7 @@ def train(epoch):
         inputs = batch[0].to(device).squeeze(0)
         gts = batch[1].to(device).squeeze(0)
         cls_gts = torch.LongTensor(batch[-1]).to(device)
+        #print(cls_gts[0], cls_gts[-1])
         
         gts_neg = torch.full_like(gts, 0.0)
         gts_cat = torch.cat([gts, gts_neg], dim=0)
