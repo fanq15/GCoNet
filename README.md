@@ -39,7 +39,7 @@ Run `sh all.sh` for training (`train_GPU0.sh`) and testing (`test.sh`).
 ## Note and Discussion
 
 We observed that the results on CoCA dataset are unstable when train the model multiple times, and the performance fluctuation can reach around 2.0 ponits (But our performance are still much better than other methods in the worst case). While the results on both CoSOD3k and Cosal2015 are stable. 
-***Therefore, we provide our used training pairs and sequences with deterministic data augmentation to help you to reproduce our results on CoCA. (In different machines, these inputs and data augmentation are different but deterministic.) However, there is still randomness in the training stage, and you can obtain different performance on CoCA.***
+***Therefore, we provide our used training pairs and sequences with deterministic data augmentation to help you to reproduce our results on CoCA. (In different machines, these inputs and data augmentation are different but deterministic.) However, there is still randomness in the training stage, and you can obtain different performance on CoCA. We also observed that for both Cosal2015 and CoSOD3k datasets, you can obtain better performance for your trained model.***
 
 There are three possible reasons:
 
