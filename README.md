@@ -36,10 +36,16 @@ Run `test.sh` for evaluation.
 
 Run `sh all.sh` for training (`train_GPU0.sh`) and testing (`test.sh`).
 
+## Prediction results
+The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.google.com/file/d/17LgbcwGNK1DFl9jRAoMxF2796YlQYR4a/view?usp=sharing).
+
+
 ## Note and Discussion
 
-We observed that the results on CoCA dataset are unstable when train the model multiple times, and the performance fluctuation can reach around 2.0 ponits (But our performance are still much better than other methods in the worst case). While the results on both CoSOD3k and Cosal2015 are stable. 
-***Therefore, we provide our used training pairs and sequences with deterministic data augmentation to help you to reproduce our results on CoCA. (In different machines, these inputs and data augmentation are different but deterministic.) However, there is still randomness in the training stage, and you can obtain different performance on CoCA. We also observed that for both Cosal2015 and CoSOD3k datasets, you can obtain better performance for your trained model.***
+***In your training, you can usually obtain slightly worse performance on CoCA dataset and slightly better perofmance on Cosal2015 and CoSOD3k datasets. The performance fluctuation is around 1.0 point for Cosal2015 and CoSOD3k datasets and around 1.5 points for CoCA dataset.***
+
+We observed that the results on CoCA dataset are unstable when train the model multiple times, and the performance fluctuation can reach around 1.5 ponits (But our performance are still much better than other methods in the worst case).  
+***Therefore, we provide our used training pairs and sequences with deterministic data augmentation to help you to reproduce our results on CoCA. (In different machines, these inputs and data augmentation are different but deterministic.) However, there is still randomness in the training stage, and you can obtain different performance on CoCA.***
 
 There are three possible reasons:
 
@@ -54,8 +60,6 @@ Possible research directions for performance stability:
 
 It is a potential research direction to obtain stable results on such challenging real-world images. We follow other CoSOD methods to report the best performance of our model. You need to train the model multiple times to obtain the best result on CoCA dataset. If you want more discussion about it, you can contact me (qfanaa@connect.ust.hk).
 
-## Prediction results
-The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.google.com/file/d/17LgbcwGNK1DFl9jRAoMxF2796YlQYR4a/view?usp=sharing).
 
 
 
