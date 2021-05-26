@@ -42,7 +42,7 @@ The co-saliency maps of GCoNet can be found at [Google Drive](https://drive.goog
 
 ## Note and Discussion
 
-***In your training, you can usually obtain slightly worse performance on CoCA dataset and slightly better perofmance on Cosal2015 and CoSOD3k datasets. The performance fluctuation is around 1.0 point for Cosal2015 and CoSOD3k datasets and around 1.5 points for CoCA dataset.***
+***In your training, you can usually obtain slightly worse performance on CoCA dataset and slightly better perofmance on Cosal2015 and CoSOD3k datasets. The performance fluctuation is around 1.0 point for Cosal2015 and CoSOD3k datasets and around 2.0 points for CoCA dataset.***
 
 We observed that the results on CoCA dataset are unstable when train the model multiple times, and the performance fluctuation can reach around 1.5 ponits (But our performance are still much better than other methods in the worst case).  
 ***Therefore, we provide our used training pairs and sequences with deterministic data augmentation to help you to reproduce our results on CoCA. (In different machines, these inputs and data augmentation are different but deterministic.) However, there is still randomness in the training stage, and you can obtain different performance on CoCA.***
