@@ -11,7 +11,7 @@ Run `test.sh` for evaluation.
 
 ## Data Format
 
-  Put the [DUTS_class (training dataset from GICD)](https://drive.google.com/file/d/1Ej6FKifpRi1bx09I0r7D6MO-GI8SDu_M/view?usp=sharing), [CoCA](http://zhaozhang.net/coca.html), [CoSOD3k](http://dpfan.net/CoSOD3K/) and [Cosal2015]() datasets to `GCoNet/data` as the following structure:
+  Put the [DUTS_class (training dataset from GICD)](https://drive.google.com/file/d/1Ej6FKifpRi1bx09I0r7D6MO-GI8SDu_M/view?usp=sharing), [CoCA](http://zhaozhang.net/coca.html), [CoSOD3k](https://pan.baidu.com/s/1qx1YpuNnqODSl53egDHz5w) (password: cvtt) and [Cosal2015](https://pan.baidu.com/s/191v0XyaCw-Ay7_hUWRWCBQ) (password: qb4g) datasets to `GCoNet/data` as the following structure:
   ```
   GCoNet
      ├── other codes
